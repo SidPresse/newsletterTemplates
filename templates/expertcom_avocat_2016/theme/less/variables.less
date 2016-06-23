@@ -1,0 +1,89 @@
+// extends theme's variables.less file here
+
+// Expert Infos
+// -------------------------
+@colorExpertCom1: #961d23;		//rouge 			CMJN: 25 100 100 25
+@colorExpertCom2: #4d616d;		//gris bleu moyen	CMJN: 70 50 40 25
+@colorExpertCom3: #eff2f4;		//gris clair 		CMJN: 5 2 2 0
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground:        darken(@colorExpertCom3, 5%);
+@containerBackground:   #ffffff;
+@textColor:             #333333;
+
+
+// Links
+// -------------------------
+@linkColor: @textColor;
+
+
+// Typography
+// -------------------------
+@baseFontSize:          14px;
+@baseLineHeight:        18px;
+@headingsFontWeight:    bold;
+@headingsColor:         #000000;
+
+
+// Component sizing
+// -------------------------
+@headingsFontSizeH1:    38px;
+@headingsFontSizeH2:    32px;
+@headingsFontSizeH3:    26px;
+@headingsFontSizeH4:    22px;
+@headingsFontSizeH5:    18px;
+@headingsFontSizeH6:    16px;
+
+@fontSizeLarge:         floor(@baseFontSize * 1.30);  // ~18px
+@fontSizeSmall:         floor(@baseFontSize * 0.80);  // ~11px
+@fontSizeMini:          floor(@baseFontSize * 0.65);  // ~9px
+
+@buttonFontSizeLarge:   @fontSizeLarge;
+@buttonFontSizeMedium:  @baseFontSize;
+@buttonFontSizeSmall:   @fontSizeSmall;
+@buttonFontSizeTiny:    @fontSizeMini;
+
+
+// Hr border color
+// -------------------------
+@hrBorder: @colorExpertCom1;
+
+
+// Buttons
+// -------------------------
+@btnBackground:               @colorExpertCom2;
+@btnBackgroundHover:          darken(@btnBackground, 3%);
+@btnBorder:                   darken(@btnBackground, 6%);
+@btnColor: 					  #ffffff;
+
+@btnSecondaryBackground:      #fff;
+@btnSecondaryBackgroundHover: darken(@btnSecondaryBackground, 3%);
+@btnSecondaryBorder:          darken(@btnSecondaryBackground, 6%);
+@btnSecondaryColor: 		  @textColor;
+
+
+// Grid config
+// --------------------------------------------------
+@columnWidth: 60px;
+@gutterWidth: 0;
+
+
+// Padding config
+// --------------------------------------------------
+@wrapperPad: 20px;
+@wrapperPadCollapse: (@wrapperPad / 2);
+
+@columnPad: @wrapperPad;
+@columnPadCollapse: (@columnPad / 2);
+
+@blockGridPad: @wrapperPad;
+@blockGridPadCollapse: (@blockGridPad / 2);
+
+@panelPad: @wrapperPad;
+@panelPadCollapse: (@panelPad / 2);
+
+@textPad: (@wrapperPad * 2);
+@textPadCollapse: (@textPad / 2);
+

@@ -1,0 +1,104 @@
+// extends theme's variables.less file here
+
+
+
+// Global values
+// --------------------------------------------------
+
+
+// Expert Infos Expert
+// couleurs utilisées dans le nouveau logos EC
+// -------------------------
+@expertInfosEC_rouge: #E84D0E;
+
+@expertInfosEC_bleu: #3262AC;
+//nuances de bleu :
+//05418D	| TSL : 214,96,55	=> darken 10
+//3262AC	| TSL : 216,71,67	=> base
+//4084C5	| TSL : 209,68,77	=> lighten 10
+
+@expertInfosEC_gris: #878786;
+//nuances de gris :
+//1C1C1B	| TSL : 60,4,11		=> darken 40
+//878786	| TSL : 60,1,53		=> base
+
+
+// Main colors
+// -------------------------
+@colorCouleur1: @expertInfosEC_rouge;
+@colorCouleur1Clair: lighten(@colorCouleur1, 25%);
+@colorCouleur1Moyen: darken(@colorCouleur1, 15%);
+@colorCouleur1Fonce: darken(@colorCouleur1, 30%);
+
+@colorCouleur2: @expertInfosEC_bleu;
+@colorCouleur2Clair: lighten(@colorCouleur2, 10%);
+@colorCouleur2Moyen: darken(@colorCouleur2, 10%);
+@colorCouleur2Fonce: darken(@colorCouleur2, 25%);
+
+@colorCouleur3: @expertInfosEC_gris;
+@colorCouleur3Clair: lighten(@colorCouleur3, 35%);
+@colorCouleur3Moyen: lighten(@colorCouleur3, 20%);
+@colorCouleur3Fonce: darken(@colorCouleur3, 20%);
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground: lighten(@colorCouleur3Clair, 2%);
+@containerBackground: #ffffff;
+@textColor: #333333;
+
+
+// Links
+// -------------------------
+@linkColor:             @colorCouleur1;
+@linkColorHover:        darken(@linkColor, 5%);
+
+
+// Component sizing
+// -------------------------
+@buttonFontSizeLarge:   floor(@baseFontSize * 1.60);  // ~22px
+@buttonFontSizeMedium:  floor(@baseFontSize * 1.15);  // ~16px
+@buttonFontSizeSmall:   ceil(@baseFontSize * 0.85);   // ~12px
+@buttonFontSizeTiny:    ceil(@baseFontSize * 0.70);   // ~10px
+
+@headingsFontSizeH1:    30px;
+@headingsFontSizeH2:    26px;
+@headingsFontSizeH3:    22px;
+@headingsFontSizeH4:    18px;
+@headingsFontSizeH5:    16px;
+@headingsFontSizeH6:    15px;
+
+@fontSizeLarge:         floor(@baseFontSize * 1.30);  // ~18px
+@fontSizeSmall:         ceil(@baseFontSize * 0.85);  // ~12px
+@fontSizeMini:          floor(@baseFontSize * 0.65);  // ~9px
+
+
+// Buttons
+// -------------------------
+@btnSecondaryBackground:      lighten(@colorCouleur3Clair, 10%);
+@btnSecondaryBackgroundHover: darken(@btnSecondaryBackground, 5%);
+@btnSecondaryBorder:          darken(@btnSecondaryBackground, 2%);
+
+
+// Grid config
+// --------------------------------------------------
+@columnWidth: 60px;
+@gutterWidth: 0;
+
+
+// Padding config
+// --------------------------------------------------
+@wrapperPad: 20px;
+@wrapperPadCollapse: (@wrapperPad / 2);
+
+@columnPad: @wrapperPad;
+@columnPadCollapse: (@columnPad / 2);
+
+@blockGridPad: @wrapperPad;
+@blockGridPadCollapse: (@blockGridPad / 2);
+
+@panelPad: @wrapperPad;
+@panelPadCollapse: (@panelPad / 2);
+
+@textPad: (@wrapperPad * 2);
+@textPadCollapse: (@textPad / 2);

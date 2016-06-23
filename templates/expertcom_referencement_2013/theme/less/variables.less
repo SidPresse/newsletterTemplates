@@ -1,0 +1,67 @@
+// extends theme's variables.less file here
+
+// Expert Infos
+// -------------------------
+@colorExpertCom1: #d12329;
+@colorExpertCom2: #4b606d;
+@colorExpertCom3: #afbabf;
+@colorExpertCom4: #d9d9d9;
+@colorExpertCom5: #ebebeb;
+
+
+// Scaffolding
+// -------------------------
+@containerBackground:   #ffffff;
+@textColor:             #222222;
+
+
+// Links
+// -------------------------
+@linkColor:             @colorExpertCom1;
+@linkColorHover:        darken(@linkColor, 10%);
+
+
+// Typography
+// -------------------------
+@sansFontFamily:        Verdana, Geneva, sans-serif;
+
+@baseFontSize:          12px;
+@baseLineHeight:        16px;
+
+
+// Buttons
+// -------------------------
+@btnSecondaryBackground: @colorExpertCom2;
+
+
+// Component sizing
+// -------------------------
+@headingsFontSizeH1:    26px;
+@headingsFontSizeH2:    22px;
+@headingsFontSizeH3:    16px;
+@headingsFontSizeH4:    15px;
+@headingsFontSizeH5:    14px;
+@headingsFontSizeH6:    13px;
+
+@fontSizeLarge:         (@baseFontSize * 1.50);  // ~18px
+@fontSizeSmall:         (@baseFontSize * 0.85);  // ~10px
+@fontSizeMini:          (@baseFontSize * 0.75);  // ~9px
+
+
+// Grid config
+// --------------------------------------------------
+@columnWidth: 55px;
+@gutterWidth: 0;
+//on rajoute les bordures du container au calcul
+@containerWidth: (11 * @gutterWidth + 12 * @columnWidth + 2px);
+
+
+// Padding config
+// --------------------------------------------------
+@wrapperPad: 10px;
+@columnPad: 10px;
+
+@textPad: 20px;
+@textPadCollapse: (@textPad / 2);
+//calcul du padding de 20px de manière relative
+// @textPadCollapse: unit(round((@textPad / @containerWidth * 100), 6), %);

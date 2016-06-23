@@ -1,0 +1,744 @@
+//
+// Expertinfos Avocats theme's newsletter
+// v3.0 | 2015-06-23 10:45
+// --------------------------------------------------
+
+
+//Propriétés mso-* utilisées dans Outlook
+//Debug outlook : http://www.verticalresponse.com/blog/its-not-you-its-outlook-the-complete-guide-for-email-marketers/
+
+// Débuggage à effectuer :
+// - Live Mail							=> OK résolu
+// - Lotus Notes 8.5					=> OK résolu
+// - Outlook 2003, 2007, 2010, 2013		=> OK résolu
+// - Gmail Android						=> OK résolu
+// - Gmail IOS7							=> OK résolu
+// - Orange.fr Win						=> OK résolu
+// - Outlook.com All OS					=> Chiffre, question, rappel : multilines et dimension : vérifier en interne
+// - Yahoo Chrome Mac					=> OK résolu
+// - Yahoo Chrome Win					=> OK résolu
+// - Yahoo Firefox Mac					=> OK résolu
+// - Yahoo Firefox Win					=> OK résolu
+
+
+// LAYOUT
+// --------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 { mso-line-height-rule: exactly; }
+h1 { line-height: (@headingsFontSizeH1 * 1.1); }
+h2 { line-height: (@headingsFontSizeH2 * 1.1); }
+h3 { line-height: (@headingsFontSizeH3 * 1.1); }
+h4 { line-height: (@headingsFontSizeH4 * 1.1); }
+h5 { line-height: (@headingsFontSizeH5 * 1.1); }
+h6 { line-height: (@headingsFontSizeH6 * 1.1); }
+
+h1, h2, h3, h4, h5, h6 {
+	a { .newsletterLinkColor(@nlHeadings); }
+}
+
+.header {
+	//suppression décalage en trop
+	td.wrapper { padding-top: 0px; }
+	table.columns td, table.column td { padding-bottom: 0px; }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .header {
+		td.wrapper { padding-top: 0px !important; }
+		table.columns td, table.column td { padding-bottom: 0px !important; }
+	}
+}
+
+//sur titres
+.preTitle {
+	display: block;
+	font-size: 12px;
+	text-transform: uppercase;
+	color: @colorCouleur1;
+	a { .newsletterLinkColor(@colorCouleur1); }
+	
+	//décalage si précédé
+	* + & { padding-top: 10px; }
+}
+
+//tous les titres
+.title {
+	.category { font-weight: normal; }
+	
+	//décalage si précédé
+	* + & { padding-top: 5px; }
+
+	//padding de séparation plus important lorsque précédé d'un autre article
+	.readMore + & { padding-top: 10px; }
+
+	& + a img { padding-top: 10px; }
+}
+
+//tous les container de texte
+.text {
+	//décalage si précédé
+	* + & { padding-top: 5px; }
+}
+
+//lien de suivis
+.readMore {
+	text-align: right;
+	font-size: @fontSizeSmall;
+	margin: 0px;
+	color: @colorCouleur1;
+	a { .newsletterLinkColor(@colorCouleur1); }
+
+	//décalage si précédé
+	* + & { padding-top: 5px; }
+}
+
+
+//gestion row avec bordures de séparation
+.row.bordered {
+	//suppression décalage en trop
+	td.wrapper { padding-top: 0px; }
+	table.columns td, table.column td { padding-bottom: 0px; }
+	td {
+		line-height: 0px;
+		hr.border {
+			margin: 0px;
+			//débuggage bordure pour PostaNova
+			background-color: transparent;
+			height: 0px;
+			-premailer-border: none;
+		}
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .row.bordered {
+		td.wrapper { padding-top: 0px !important; }
+		table.columns td, table.column td { padding-bottom: 0px !important; }
+	}
+}
+
+
+//réseaux sociaux
+.faicons {
+	vertical-align: bottom;
+	td { text-align: right; }
+}
+.faicon {
+	display: inline;
+	//pour supprimer les espaces
+	font-size: 0px;
+	mso-line-height-rule: exactly;
+	line-height: 0px;
+	padding: 0px 5px 5px 5px;
+	&.first { padding-left: 0px; }
+	&.last { padding-right: 0px; }
+	img, img& {
+		display: inline;
+		float: none;
+	}
+	img& {
+		padding: 2px;
+		vertical-align: top;
+	}
+}
+
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] {
+		.faicons { vertical-align: baseline !important; }
+		.faicon img, img.faicon {
+			width: 15px !important;
+			height: 15px !important;
+		}
+	}
+}
+
+
+// contentOnline area
+// -------------------------
+.contentOnline {
+	//réduction décalage vertical en haut
+	td.wrapper { padding-top: (@wrapperPad / 2); }
+	table.columns td, table.column td { padding-bottom: (@columnPad / 2); }
+
+	//suppression fontSize et lineHeight pour débug Outlook
+	table.columns td, table.column td {
+		mso-line-height-rule: exactly;
+		line-height: 0px;
+		font-size: 0px;
+	}
+
+	//remise en place taille texte directement sur éléments
+	.online, .name {
+		mso-line-height-rule: exactly;
+		line-height: @baseLineHeight;
+		font-size: @baseFontSize;
+	}
+
+	.online {
+		display: block;
+		padding-bottom: 5px;
+	}
+	.name { display: block; }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentOnline {
+		td.wrapper { padding-top: (@wrapperPadCollapse / 2) !important; }
+		table.columns td, table.column td { padding-bottom: (@columnPadCollapse / 2) !important; }
+		.online { padding-bottom: 0px !important; }
+
+		//pour forcer centrage contenu trop petit
+		.columns, .column { display: table !important; }
+	}
+}
+
+
+// contentBottom area
+// -------------------------
+//dimension containers (carré ou rond selon les clients mails)
+@roundContPad: 5px;
+@roundContWidth: 60px;
+//pourcentage par rapport à une largeur de 4 colonnes
+@roundContPrct: unit(60px / (3 * @gutterWidth + 4 * @columnWidth) * 100, %);
+@roundContHeight: @roundContWidth;					//padding non déduit car alignement vertical du contenu avec le padding vertical
+@roundContLineHeight: 1.25;							//Outlook ignore le line-height de la même taille que la police, on l'augmente donc de 25%
+
+.contentBottom {
+	.title { text-align: center; }
+
+	//suppression sous padding
+	table.wrapper-text {
+		width: 100%;
+		-premailer-width: 100%;
+		td {
+			padding-top: (@columnPad / 2);
+			padding-bottom: 0px;
+		}
+	}
+	
+	//couleurs de débug
+	// .wrapper:nth-child(odd) center { background-color: #080; }
+	// .wrapper:nth-child(even) center { background-color: #0b0; }
+
+	//tableau arrondi
+	table.round {
+		table-layout: fixed;
+		width: 100%;
+		-premailer-width: 100%;
+		margin: 0 auto;
+		td {
+			vertical-align: middle;
+			overflow: hidden;
+
+			&.value {
+				width: @roundContPrct;
+				-premailer-width: @roundContPrct;
+				//application dimension en mode mobile
+				//largeur fixe par uniquement cette cellule est affichée
+				@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+					table[class="body"] & { width: (@roundContWidth - @roundContPad * 2) !important; }
+				}
+			}
+			&.first, &.last {
+				font-size: 0px;
+				border-radius: 0px;
+				width: ((100% - @roundContPrct) / 2);
+				-premailer-width: ((100% - @roundContPrct) / 2);
+				//suppression fond de couleur
+				.body & { background-color: transparent; }
+			}
+
+			&, .inner {
+				text-align: center;
+				mso-line-height-rule: exactly;
+			}
+			.inner {
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+
+	//différenciation des tailles
+	.chiffre table.round {
+		//variabilisé en VBSCRIPT
+		@chiffreNbr: 4;
+		@chiffreFontSize: round(88px / @chiffreNbr);
+		@chiffreLineHeight: ceil(@chiffreFontSize * @roundContLineHeight);
+		@chiffrePadVertical: ((@roundContHeight - @chiffreLineHeight) / 2);
+		@chiffreContHeight: (@roundContHeight - @chiffrePadVertical * 2);
+
+		td {
+			&, .inner {
+				font-size: e("**((chiffreFontSize))**px");
+				line-height: e("**((chiffreLineHeight))**px");
+			}
+
+			height: e("**((chiffreContHeight))**px");
+			-premailer-height: e("**((chiffreContHeight))**");
+			padding-top: e("**((floor(chiffrePadVertical)))**px");
+			padding-bottom: e("**((ceil(chiffrePadVertical)))**px");
+			//application dimension en mode mobile
+			@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+				table[class="body"] & {
+					height: e("**((chiffreContHeight))**px") !important;
+					padding-top: e("**((floor(chiffrePadVertical)))**px") !important;
+					padding-bottom: e("**((ceil(chiffrePadVertical)))**px") !important;
+				}
+			}
+		}
+	}
+	.question table.round {
+		@localFontSize: 40px;
+		@localLineHeight: ceil(@localFontSize * @roundContLineHeight);
+		@localPadVertical: ((@roundContHeight - @localLineHeight) / 2);
+		@localContHeight: (@roundContHeight - @localPadVertical * 2);
+
+		td {
+			&, .inner {
+				font-size: @localFontSize;
+				line-height: @localLineHeight;
+			}
+
+			height: @localContHeight;
+			-premailer-height: unit(@localContHeight);
+			padding-top: floor(@localPadVertical);
+			padding-bottom: ceil(@localPadVertical);
+			//application dimension en mode mobile
+			@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+				table[class="body"] & {
+					height: @localContHeight !important;
+					padding-top: floor(@localPadVertical) !important;
+					padding-bottom: ceil(@localPadVertical) !important;
+				}
+			}
+		}
+	}
+	.echeancier table.round {
+		@localFontSize1: 28px;
+		@localFontSize2: 10px;
+		@localLineHeight1: ceil(@localFontSize1 * @roundContLineHeight);
+		@localLineHeight2: ceil(@localFontSize2 * @roundContLineHeight);
+		@localPadVertical: ((@roundContHeight - @localLineHeight1 - @localLineHeight2) / 2);
+		@localContHeight: (@roundContHeight - @localPadVertical * 2);
+
+		td {
+			line-height: 0px;
+			font-size: 0px;
+			&, .inner { text-transform: uppercase; }
+
+			.inner {
+				text-align: center;
+				padding: 0;
+				margin: 0;
+				//calage différencié du jour et du mois
+				&.day {
+					font-size: @localFontSize1;
+					line-height: @localLineHeight1;
+				}
+				&.month {
+					font-size: @localFontSize2;
+					line-height: @localLineHeight2;
+				}
+			}
+
+			height: @localContHeight;
+			-premailer-height: unit(@localContHeight);
+			padding-top: floor(@localPadVertical);
+			padding-bottom: ceil(@localPadVertical);
+			//application dimension en mode mobile
+			@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+				table[class="body"] & {
+					height: @localContHeight !important;
+					padding-top: floor(@localPadVertical) !important;
+					padding-bottom: ceil(@localPadVertical) !important;
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentBottom {
+		td { &, .title { text-align: left !important; } }
+
+		table.wrapper-text {
+			width: auto !important;
+			td {
+				padding-top: (@columnPadCollapse / 2) !important;
+				padding-bottom: (@columnPadCollapse / 2) !important;
+			}
+		}
+
+		td.wrapper-round { padding: 0px @textPadCollapse !important; }
+		.wrapper.last {
+			td.wrapper-round { padding-bottom: @columnPadCollapse !important; }
+		}
+
+		center {
+			display: block !important;
+			float: left !important;
+			width: @columnWidth !important;
+		}
+
+		table.round {
+			td { text-align: center !important; }
+		}
+	}
+}
+
+
+// DEFAULT COLORS
+// --------------------------------------------------
+
+// Main container
+// -------------------------
+.container { background-color: @nlContainerBackground; }
+
+
+// Typography
+// -------------------------
+body, table.body, h1, h2, h3, h4, h5, h6, p, td {
+	color: @nlText;
+}
+
+
+// Links
+// -------------------------
+a {
+	//LoVe's Hurts Fade Away (LVHFA)
+	&, h1 &, h2 &, h3 &, h4 &, h5 &, h6 &, .appleLinks & {
+		color: @nlLinkColor;
+		.important { color: @nlLinkColor !important; }
+		&:visited { &, .important { color: @nlLinkColor !important; } }
+		&:hover { &, .important { color: @nlLinkColorHover !important; } }
+		&:focus { &, .important { color: @nlLinkColorHover !important; } }
+		&:active { &, .important { color: @nlLinkColor !important; } }
+	}
+}
+
+
+// contentALaUne area
+// -------------------------
+.contentALaUne {
+	.title {
+		color: @nlCntUneTitle;
+		a { .newsletterLinkColor(@nlCntUneTitle); }
+	}
+	.text {
+		color: @nlCntUneText;
+		a { .newsletterLinkColor(@nlCntUneText); }
+	}
+}
+
+
+// contentArticles area
+// -------------------------
+.contentArticles {
+	.title {
+		color: @nlCntArtTitle;
+		a { .newsletterLinkColor(@nlCntArtTitle); }
+	}
+	.text {
+		color: @nlCntArtText;
+		a { .newsletterLinkColor(@nlCntArtText); }
+	}
+}
+
+
+// contentBottom area
+// -------------------------
+.contentBottom {
+	.chiffre {
+		.title {
+			color: @nlCntChfTitle;
+			a { .newsletterLinkColor(@nlCntChfTitle); }
+		}
+		.text {
+			color: @nlCntChfText;
+			a { .newsletterLinkColor(@nlCntChfText); }
+		}
+	}
+	.question {
+		.title {
+			color: @nlCntQtnTitle;
+			a { .newsletterLinkColor(@nlCntQtnTitle); }
+		}
+		.text {
+			color: @nlCntQtnText;
+			a { .newsletterLinkColor(@nlCntQtnText); }
+		}
+	}
+	.echeancier {
+		.title {
+			color: @nlCntAgdTitle;
+			a { .newsletterLinkColor(@nlCntAgdTitle); }
+		}
+		.text {
+			color: @nlCntAgdText;
+			a { .newsletterLinkColor(@nlCntAgdText); }
+		}
+	}
+}
+
+
+// CUSTOM COLORS
+// --------------------------------------------------
+
+// Body
+// -------------------------
+body, table.body {
+	-premailer-background: e("##((nlBodyBackground))##");
+	//rajout pour suppression paramètre doublon via compiler
+	background-image: url("-premailer-bgdebug");
+}
+
+
+// Header
+// -------------------------
+//pour supprimer toute zone blanche avant chargement header
+.header {
+	&, td.expander { -premailer-background: e("##((nlBodyBackground))##"); }
+}
+
+
+// Hr borders
+// -------------------------
+hr {
+	color: e("##((nlHrBorder))##");
+	background: e("##((nlHrBorder))##");
+}
+//gestion row avec bordures de séparation
+.row.bordered {
+	td hr.border {
+		-premailer-border-bottom: 1px solid e("##((nlHrBorder))##");
+		//rajout pour suppression paramètre doublon via compiler
+		border: 999000999ex none transparent;
+	}
+}
+
+
+// contentOnline area
+// -------------------------
+.contentOnline {
+	&, td.expander { -premailer-background: e("##((nlCntOnlineBackground))##"); }
+	.newsletterInnerTextColor(e("##((nlCntOnlineText))##"));
+	.online {
+		color: e("##((nlCntOnlineText))##");
+		a { .newsletterLinkColor(e("##((nlCntOnlineText))##")); }
+	}
+	.name {
+		color: e("##((nlCntOnlineName))##");
+		a { .newsletterLinkColor(e("##((nlCntOnlineName))##")); }
+	}
+}
+
+
+// contentCabInform area
+// -------------------------
+.contentCabInform {
+	&, td.expander { -premailer-background: e("##((nlCntCabBackground))##"); }
+	.title {
+		color: e("##((nlCntCabTitle))##");
+		a { .newsletterLinkColor(e("##((nlCntCabTitle))##")); }
+	}
+	.text, .readMore {
+		color: e("##((nlCntCabText))##");
+		.important { color: e("##((nlCntCabText))##") !important; }
+	}
+	.newsletterInnerTextColor(e("##((nlCntCabText))##"));
+}
+
+
+// contentALaUne area
+// -------------------------
+.contentALaUne {
+	.preTitle { color: e("##((nlCntUnePreTitle))##"); }
+	.title .category {
+		color: e("##((nlCntUneCategory))##");
+		.important { color: e("##((nlCntUneCategory))##") !important; }
+	}
+	.readMore {
+		color: e("##((nlCntUneReadMore))##");
+		a { .newsletterLinkColor(e("##((nlCntUneReadMore))##")); }
+	}
+}
+
+
+// contentArticles area
+// -------------------------
+.contentArticles {
+	.preTitle { color: e("##((nlCntArtPreTitle))##"); }
+	.title .category {
+		color: e("##((nlCntArtCategory))##");
+		.important { color: e("##((nlCntArtCategory))##") !important; }
+	}
+	.readMore {
+		color: e("##((nlCntArtReadMore))##");
+		a { .newsletterLinkColor(e("##((nlCntArtReadMore))##")); }
+	}
+}
+
+
+// contentBottom area
+// -------------------------
+.contentBottom {
+	.chiffre {
+		table.round {
+			td { -premailer-background: e("##((nlCntChfBackground))##"); }
+			.newsletterInnerTextColor(e("##((nlCntChfValue))##"));
+		}
+	}
+	.question {
+		table.round {
+			td { -premailer-background: e("##((nlCntQtnBackground))##"); }
+			.newsletterInnerTextColor(e("##((nlCntQtnValue))##"));
+		}
+	}
+	.echeancier {
+		table.round {
+			td { -premailer-background: e("##((nlCntAgdBackground))##"); }
+			.newsletterInnerTextColor(e("##((nlCntAgdValue))##"));
+		}
+	}
+}
+
+// contentContact area
+// -------------------------
+.contentContact {
+	&, td.expander { -premailer-background: e("##((nlCntCctBackground))##"); }
+	.newsletterInnerTextColor(e("##((nlCntCctText))##"));
+}
+
+
+// footer area
+// -------------------------
+.footer {
+	&, td.expander { -premailer-background: e("##((nlFooterBackground))##"); }
+	.newsletterInnerTextColor(e("##((nlFooterText))##"));
+	small { color: e("##((nlFooterText))##"); }
+}
+
+/*
+// DEVELOPPEMENT COLORS
+// --------------------------------------------------
+
+// Body
+// -------------------------
+body, table.body {
+	background: @nlBodyBackground;
+	//rajout pour suppression paramètre doublon via compiler
+	background-image: url("-premailer-bgdebug");
+}
+
+
+// Header
+// -------------------------
+//pour supprimer toute zone blanche avant chargement header
+.header {
+	&, td.expander { background: @nlBodyBackground; }
+}
+
+
+// Hr borders
+// -------------------------
+hr {
+	color: @nlHrBorder;
+	background: @nlHrBorder;
+}
+//gestion row avec bordures de séparation
+.row.bordered {
+	td hr.border { border-bottom: 1px solid @nlHrBorder; }
+}
+
+
+// contentOnline area
+// -------------------------
+.contentOnline {
+	&, td.expander { background: @nlCntOnlineBackground; }
+	.newsletterInnerTextColor(@nlCntOnlineText);
+	.online {
+		color: @nlCntOnlineText;
+		a { .newsletterLinkColor(@nlCntOnlineText); }
+	}
+	.name {
+		color: @nlCntOnlineName;
+		a { .newsletterLinkColor(@nlCntOnlineName); }
+	}
+}
+
+
+// contentCabInform area
+// -------------------------
+.contentCabInform {
+	&, td.expander { background: @nlCntCabBackground; }
+	.title {
+		color: @nlCntCabTitle;
+		a { .newsletterLinkColor(@nlCntCabTitle); }
+	}
+	.text, .readMore { color: @nlCntCabText; }
+	.newsletterInnerTextColor(@nlCntCabText);
+}
+
+
+// contentALaUne area
+// -------------------------
+.contentALaUne {
+	.preTitle { color: @nlCntUnePreTitle; }
+	.title {
+		.category { color: @nlCntUneCategory; }
+	}
+	.readMore {
+		color: @nlCntUneReadMore;
+		a { .newsletterLinkColor(@nlCntUneReadMore); }
+	}
+}
+
+
+// contentArticles area
+// -------------------------
+.contentArticles {
+	.preTitle { color: @nlCntArtPreTitle; }
+	.title .category { color: @nlCntArtCategory; }
+	.readMore {
+		color: @nlCntArtReadMore;
+		a { .newsletterLinkColor(@nlCntArtReadMore); }
+	}
+}
+
+
+// contentBottom area
+// -------------------------
+.contentBottom {
+	.chiffre {
+		table.round {
+			td { background: @nlCntChfBackground; }
+			.newsletterInnerTextColor(@nlCntChfValue);
+		}
+	}
+	.question {
+		table.round {
+			td { background: @nlCntQtnBackground; }
+			.newsletterInnerTextColor(@nlCntQtnValue);
+		}
+	}
+	.echeancier {
+		table.round {
+			td { background: @nlCntAgdBackground; }
+			.newsletterInnerTextColor(@nlCntAgdValue);
+		}
+	}
+}
+
+// contentContact area
+// -------------------------
+.contentContact {
+	&, td.expander { background: @nlCntCctBackground; }
+	.newsletterInnerTextColor(@nlCntCctText);
+}
+
+
+// footer area
+// -------------------------
+.footer {
+	&, td.expander { background: @nlFooterBackground; }
+	.newsletterInnerTextColor(@nlFooterText);
+	small { color: @nlFooterText; }
+}
+*/

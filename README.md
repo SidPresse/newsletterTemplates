@@ -14,14 +14,27 @@ Vous devez être sur Mac ou Linux pour pouvoir éditer ou créer de nouveaux tem
 		#Sous Mac avec brew
 		brew install node
 
-2. LESSC http://lesscss.org
+2. LESSC http://lesscss.org et GROUP-CSS-MEDIA-QUERIES https://github.com/Se7enSky/group-css-media-queries
 
 		npm install -g less
+		npm install -g less-plugin-group-css-media-queries
 
-3. PREMAILER https://github.com/premailer/premailer
+3. RUBYGEMS https://rubygems.org  
+Pour une installation sur CENTOS avec RVM :  
+https://www.digitalocean.com/community/tutorials/how-to-install-ruby-2-1-0-on-centos-6-5-using-rvm
+
+		#Sous Mac avec brew
+		brew install ruby
+
+4. PREMAILER https://github.com/premailer/premailer
 
 		#Installation avec gem
 		gem install premailer
+
+5. NOKOGIRI
+
+		#Installation avec gem
+		gem install nokogiri
 
 ###Installation du repository sur votre poste
 Ouvrir le terminal et se déplacer dans le dossier où vous souhaiter copier la bibliothèque.  
@@ -236,6 +249,19 @@ Donne en sortie :
 		<src>
 		http://newsletter-templates.expert-infos.com/templates/liberaletvous/theme/images/actumois.jpg
 		</src>
+
+##Insertion de tags ASP
+Encadrer toute portion de code ASP par les tags suivants :
+
+		<!--{{%%{{ ... }}%%}}-->
+
+Ce qui donnerait par exemple en sortie :
+
+		<% ... %>
+
+Pour les variables ASP insérées en attributs HTML insérer uniquement les tags suivants :
+
+		<a href="%%{{=maVariable}}%%"></a>
 
 ##Compilation du template
 (génération de style.css, création des versions inline et postanova)

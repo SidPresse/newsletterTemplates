@@ -1,0 +1,51 @@
+// extends theme's variables.less file here
+
+
+// Main colors
+// -------------------------
+// @colorAgipi1: #005ca4;		//ancien bleu
+@colorAgipi1: #006eb6;		//bleu
+@colorAgipi2: #f2f2f2;		//gris clair
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground:        darken(@colorAgipi2, 5%);
+@containerBackground:   #ffffff;
+@textColor:             #222222;
+
+
+// Component sizing
+// -------------------------
+@fontSizeLarge:         floor(@baseFontSize * 1.30);  // ~18px
+@fontSizeSmall:         floor(@baseFontSize * 0.80);  // ~11px
+@fontSizeMini:          floor(@baseFontSize * 0.65);  // ~9px
+
+
+// Hr border color
+// -------------------------
+@hrBorder: @colorAgipi1;
+
+
+// Grid config
+// --------------------------------------------------
+@columnWidth: 60px;
+@gutterWidth: 0;
+
+
+// Padding config
+// --------------------------------------------------
+@wrapperPad: 20px;
+@wrapperPadCollapse: (@wrapperPad / 2);
+
+@columnPad: @wrapperPad;
+@columnPadCollapse: (@columnPad / 2);
+
+@blockGridPad: @wrapperPad;
+@blockGridPadCollapse: (@blockGridPad / 2);
+
+@panelPad: @wrapperPad;
+@panelPadCollapse: (@panelPad / 2);
+
+@textPad: (@wrapperPad * 2);
+@textPadCollapse: (@textPad / 2);

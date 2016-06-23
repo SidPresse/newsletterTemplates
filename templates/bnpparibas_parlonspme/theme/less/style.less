@@ -1,0 +1,330 @@
+// theme's imports
+@import "import.less";
+
+// additionnal template's style which extends ink's style
+
+// LAYOUT
+// --------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+	mso-line-height-rule: exactly;
+	line-height: 1.1;
+}
+
+//gestion header
+.header {
+	background-color: @colorBnp1;
+	//suppression décalage vertical
+	td.wrapper { padding-top: 0; }
+}
+.headerShadow {
+	td.wrapper { padding-top: 0; }
+	table.columns td, table.column td { padding-bottom: 0; }	
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] {
+		.header {
+			td.wrapper { padding-top: 0 !important; }
+		}
+		.headerShadow {
+			td.wrapper { padding-top: 0 !important; }
+			table.columns td, table.column td { padding-bottom: 0 !important; }
+		}
+	}
+}
+
+//sur titres
+.preTitle {
+	margin: 0;
+	font-size: @headingsFontSizeH3;
+	font-weight: bold;
+	font-style: italic;
+	text-transform: uppercase;
+	padding-bottom: @wrapperPad;
+	a { .newsletterLinkColor(@textColor); }
+}
+
+//tous les titres
+.title {
+	color: #000000;
+	a { .newsletterLinkColor(#000000); }
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+//lien de suivis
+.readMore {
+	text-align: right;
+	font-size: @fontSizeSmall;
+	font-weight: bold;
+	margin: 0;
+	&.vieentreprise { color: @categorie_vieentreprise; }
+	&.conjoncture { color: @categorie_conjoncture; }
+	&.innovation { color: @categorie_innovation; }
+	&.international { color: @categorie_international; }
+	&.financement { color: @categorie_financement; }
+	&.marketing { color: @categorie_marketing; }
+	&.assurances { color: @categorie_assurances; }
+	&.moyenspaiement { color: @categorie_moyenspaiement; }
+	&.tresorerie { color: @categorie_tresorerie; }
+	&.fiscalite { color: @categorie_fiscalite; }
+	&.immobilier { color: @categorie_immobilier; }
+	&.entrepriseresponsable { color: @categorie_entrepriseresponsable; }
+	&.management { color: @categorie_management; }
+	&.succes { color: @categorie_succes; }
+	&.legislation { color: @categorie_legislation; }
+	&.creationentreprise { color: @categorie_creationentreprise; }
+}
+
+//categories
+table.columns, table.column {
+	.category_wrapper {
+		td { padding: 0; }
+		.category {
+			//padding intérieur pour le fond
+			td {
+				padding: 4px;
+				font-size: 11px;
+				line-height: 11px;
+				color: #ffffff;
+				text-transform: uppercase;
+
+				&.vieentreprise { background-color: @categorie_vieentreprise; }
+				&.conjoncture { background-color: @categorie_conjoncture; }
+				&.innovation { background-color: @categorie_innovation; }
+				&.international { background-color: @categorie_international; }
+				&.financement { background-color: @categorie_financement; }
+				&.marketing { background-color: @categorie_marketing; }
+				&.assurances { background-color: @categorie_assurances; }
+				&.moyenspaiement { background-color: @categorie_moyenspaiement; }
+				&.tresorerie { background-color: @categorie_tresorerie; }
+				&.fiscalite { background-color: @categorie_fiscalite; }
+				&.immobilier { background-color: @categorie_immobilier; }
+				&.entrepriseresponsable { background-color: @categorie_entrepriseresponsable; }
+				&.management { background-color: @categorie_management; }
+				&.succes { background-color: @categorie_succes; }
+				&.legislation { background-color: @categorie_legislation; }
+				&.creationentreprise { background-color: @categorie_creationentreprise; }
+			}
+		}
+	}
+}
+
+//pas de float pour image contenus dans liens en block ou les liens images
+.link_box, .contentALaUne, .contentSecondaire, .contentTertiaire, .contentBottom {
+	img { float: none; }
+}
+
+//gestion row avec bordures de séparation
+.row.bordered {
+	//suppression décalage en trop
+	td.wrapper { padding-top: 0px; }
+	table.columns td, table.column td { padding-bottom: 0px; }
+	td {
+		line-height: 0;
+		hr.border {
+			margin: 0;
+			//débuggage bordure pour PostaNova
+			background-color: transparent;
+			height: 0;
+			border-bottom: 1px solid @hrBorder;
+		}
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .row.bordered {
+		td.wrapper { padding-top: 0px !important; }
+		table.columns td, table.column td { padding-bottom: 0px !important; }
+	}
+}
+
+
+// contentOnline area
+// -------------------------
+.contentOnline {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(darken(@bodyBackground, 30%));
+	td {
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.25);
+	}
+	//réduction décalage vertical en haut
+	td.wrapper { padding-top: (@wrapperPad / 2); }
+	table.columns td, table.column td { padding-bottom: (@columnPad / 2); }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentOnline {
+		td.wrapper { padding-top: (@wrapperPadCollapse / 2) !important; }
+		table.columns td, table.column td { padding-bottom: (@columnPadCollapse / 2) !important; }
+	}
+}
+
+
+// contentMonth area
+// -------------------------
+.contentMonth {
+	//suppression décalage en trop
+	td.wrapper { padding-top: 0px; }
+	table.columns td, table.column td { padding-bottom: 0px; }
+
+	background-color: @colorBnp1;
+	.newsletterInnerTextColor(#ffffff);
+
+	.dateMonth {
+		display: block;
+		font-size: 10px;
+		line-height: 20px;
+		text-align: right;
+		text-transform: uppercase;
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentMonth {
+		td.wrapper { padding-top: 0px !important; }
+		table.columns td, table.column td { padding-bottom: 0px !important; }
+	}
+}
+
+
+//contentPartenariat area
+// -------------------------
+.contentPartenariat {
+	//suppression décalage en trop
+	td.wrapper { padding-top: 0px; }
+	table.columns td, table.column td { padding-bottom: 0px; }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentPartenariat {
+		td.wrapper { padding-top: 0px !important; }
+		table.columns td, table.column td { padding-bottom: 0px !important; }
+	}
+}
+
+
+// contentSecondaire area
+// -------------------------
+.contentSecondaire {
+	background-color: @colorBnp3;
+}
+
+
+// contentBottom area
+// -------------------------
+.contentBottomTitle, .contentBottom {
+	background-color: @colorBnp3;
+}
+.contentBottomTitle {
+	table.columns td, table.column td { padding-bottom: 0px; }
+}
+.contentBottom {
+	td.wrapper { padding-top: 0px; }
+
+	td.wrapper.first {
+		table.columns .text-pad,
+		table.column .text-pad {
+			padding-right: (@textPad / 2) !important;
+		}
+	}
+	td.wrapper.last {
+		table.columns .text-pad,
+		table.column .text-pad {
+			padding-left: (@textPad / 2) !important;
+		}
+	}
+	table.columns, table.column {
+		.category_wrapper tr td {
+			padding-top: 10px;
+			.category tr td { padding-top: 4px; }
+		}
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentBottomTitle {
+		table.columns td, table.column td { padding-bottom: 0px !important; }
+	}
+	table[class="body"] .contentBottom {
+		td.wrapper { padding-top: 0px !important; }
+	}
+}
+
+
+// contentContact area
+// -------------------------
+.contentContact {
+	background-color: @colorBnp4;
+	.newsletterInnerTextColor(mix(#fff, @colorBnp4, 85%));
+
+	.link_site {
+		display: block;
+		font-size: @headingsFontSizeH5;
+		line-height: @headingsFontSizeH5;
+		font-weight: bold;
+		padding-top: ((28px - @headingsFontSizeH5) / 2);
+		padding-bottom: ((28px - @headingsFontSizeH5) / 2);
+	}
+
+	.joinus {
+		font-size: @baseFontSize;
+		line-height: @baseFontSize;
+		font-weight: bold;
+		padding-right: 10px;
+		color: mix(#fff, @colorBnp4, 65%);
+		padding-top: ((28px - @baseFontSize) / 2);
+		padding-bottom: ((28px - @baseFontSize) / 2);
+		vertical-align: ((28px - @baseFontSize) / 2);
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentContact {
+		td.wrapper.first table.columns td, table.column td { padding-bottom: (@columnPadCollapse / 2) !important; }
+		td.wrapper.last { padding-top: (@wrapperPadCollapse / 2) !important; }
+		td { text-align: center !important; }
+	}
+}
+
+//réseaux sociaux
+.webicons td { text-align: right; }
+.webicon {
+	display: inline;
+	//pour supprimer les espaces
+	font-size: 0px;
+	mso-line-height-rule: exactly;
+	line-height: 0px;
+	// padding: 0px 5px 5px 5px;
+	&.first { padding-left: 0px; }
+	&.last { padding-right: 0px; }
+	img {
+		display: inline;
+		float: none;
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .webicons {
+		.columns, .column { display: table !important; }
+		td { text-align: center !important; }
+	}
+	table[class="body"] .webicon img {
+		width: 28px !important;
+		height: 28px !important;
+	}
+}
+
+
+// contentUnsubscribe area
+// -------------------------
+.contentUnsubscribe {
+	.newsletterInnerTextColor(darken(@bodyBackground, 30%));
+	td {
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.25);
+	}
+	//réduction décalage vertical en haut
+	td.wrapper { padding-top: (@wrapperPad / 2); }
+	table.columns td, table.column td { padding-bottom: (@columnPad / 2); }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentUnsubscribe {
+		td.wrapper { padding-top: (@wrapperPadCollapse / 2) !important; }
+		table.columns td, table.column td { padding-bottom: (@columnPadCollapse / 2) !important; }
+	}
+}

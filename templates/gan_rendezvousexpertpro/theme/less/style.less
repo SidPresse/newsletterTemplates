@@ -1,0 +1,251 @@
+// theme's imports
+@import "import.less";
+
+// additionnal template's style which extends ink's style
+
+// LAYOUT
+// --------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 { line-height: 1.1; }
+
+
+// header area
+// -------------------------
+.header {
+	background-color: @colorGan3;
+
+	//suppression décalage en trop
+	td.wrapper { padding-top: 0; }
+	table.columns td, table.column td { padding-bottom: 0; }
+
+	//suppression décalages liens images
+	a { line-height: 0; }
+	img { float: none; }
+
+	//rajout fond dans la colonne de gauche
+	.sub-columns.first { background-color: @colorGan1; }
+
+	//replacement bouton de PostaNova
+	.sub-columns.last {
+		position: relative;
+		body & a[href^="javascript"] {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	}
+}
+
+
+// contentOnline area
+// -------------------------
+.contentOnline {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(#ffffff);
+
+	td {
+		font-size: @fontSizeMini;
+		line-height: (@fontSizeMini * 1.33);
+	}
+}
+
+
+
+// contentMain area
+// -------------------------
+.contentMain {
+	//déplacement paddingTop à l'intérieur pour coller bande jaune
+	td.wrapper { padding-top: 0; }
+	table.columns, table.column {
+		td { padding-top: (@wrapperPad * 2); }
+		.text-pad {
+			padding-left: (@textPad * 2);
+			padding-right: (@textPad * 2);
+		}
+	}
+
+	//bande verticale
+	.sub-columns.first { background-color: @colorGan2; }
+
+	.preTitle {
+		display: block;
+		font-size: @headingsFontSizeH5;
+		line-height: (@headingsFontSizeH5 * 1.1);
+	}
+
+	.title {
+		// text-transform: uppercase;
+		padding-top: 10px;
+	}
+
+	.teaser {
+		display: block;
+		font-weight: bold;
+		font-size: @headingsFontSizeH3;
+		line-height: (@headingsFontSizeH3 * 1.1);
+		padding-top: 10px;
+	}
+
+	.date {
+		display: block;
+		font-weight: bold;
+		font-size: @headingsFontSizeH3;
+		line-height: (@headingsFontSizeH3 * 1.1);
+		.newsletterInnerTextColor(@colorGan1);
+		padding-top: 20px;
+	}
+	
+	.addressTitle, .addressDash { color: @colorGan1 !important; }
+	a.address { .newsletterLinkColor(@colorGan1); }
+
+	.breakfast {
+		display: block;
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.1);
+		padding-top: 20px;
+		padding-bottom: 10px;
+	}
+
+	.orators {
+		display: block;
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.33);
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentMain {
+		td.wrapper { padding-top: 0 !important; }
+		table.columns, table.column {
+			td { padding-top: @wrapperPad !important; }
+			.text-pad {
+				padding-left: @textPad !important;
+				padding-right: @textPad !important;
+			}
+		}
+	}
+}
+
+
+// contentFooter area
+// -------------------------
+.contentFooter {
+	.newsletterInnerTextColor(@colorGan1);
+
+	//suppression décalage en trop
+	td.wrapper { padding-top: 0; }
+	table.columns, table.column {
+		td { padding-bottom: 0; }
+		.text-pad {
+			padding-left: (@textPad * 2);
+			padding-right: (@textPad * 2);
+		}
+	}
+
+	//décalage à droite
+	.rounderWrapper {
+		padding-right: @textPad;
+		height: 100%;
+		.rounder {
+			overflow: hidden;
+			border-radius: 0 10px 10px 0;
+			table {
+				width: 100%;
+				td {
+					background-color: @colorGan3;
+					padding-top: (@wrapperPad / 2);
+					padding-bottom: (@wrapperPad / 2);
+				}
+			}
+		}
+	}
+
+	//bande bleu
+	.sub-columns.first { background-color: @colorGan3; }
+
+	.subOnline {
+		display: block;
+		font-weight: bold;
+		font-size: (@baseFontSize * 0.95);
+		line-height: (@baseFontSize * 0.95 * 1.33);
+
+		//défition des couleurs
+		color: @colorGan1;
+		.link_disabled { .newsletterLinkColor(@colorGan1); }
+
+		.online {
+			color: #ffffff;
+			font-size: @headingsFontSizeH3;
+			line-height: (@headingsFontSizeH3 * 1.1);
+		}
+		.onlineLink { .newsletterLinkColor(#ffffff); }
+	}
+
+	.subCondition {
+		display: block;
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.1);
+		&, .condition { color: #ffffff; }
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentFooter {
+		table.columns, table.column {
+			.text-pad {
+				padding-left: @textPad !important;
+				padding-right: @textPad !important;
+			}
+		}
+		.rounderWrapper { padding-right: @textPadCollapse !important; }
+	}
+}
+
+// contentLegal area
+// -------------------------
+.contentLegal {
+	.newsletterInnerTextColor(@colorGan1);
+
+	//déplacement paddingTop à l'intérieur pour coller bande jaune
+	td.wrapper { padding-top: 0; }
+	table.columns, table.column {
+		td {
+			padding-top: (@wrapperPad / 2);
+			padding-bottom: (@wrapperPad / 2);
+		}
+		.text-pad {
+			padding-left: (@textPad * 2);
+			padding-right: (@textPad * 2);
+		}
+	}
+
+	td {
+		font-size: @fontSizeMini;
+		font-style: italic;
+		line-height: (@fontSizeMini * 1.33);
+	}
+
+	//bande jaune clair
+	.sub-columns.first { background-color: @colorGan2; }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentLegal {
+		td.wrapper { padding-top: 0 !important; }
+		table.columns, table.column {
+			.text-pad {
+				padding-left: @textPad !important;
+				padding-right: @textPad !important;
+			}
+		}
+	}
+}
+
+// contentUnsubscribe area
+// -------------------------
+.contentUnsubscribe {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(#ffffff);
+
+	td {
+		font-size: @fontSizeMini;
+		line-height: (@fontSizeMini * 1.33);
+	}
+}

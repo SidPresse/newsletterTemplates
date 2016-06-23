@@ -1,0 +1,449 @@
+//
+// Expertinfos theme's newsletter
+// v3.0 | 2014-09-16 09:30
+// --------------------------------------------------
+
+
+//Propriétés mso-* utilisées dans Outlook
+//Debug outlook : http://www.verticalresponse.com/blog/its-not-you-its-outlook-the-complete-guide-for-email-marketers/
+
+// LAYOUT
+// --------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 { mso-line-height-rule: exactly; }
+h1 { line-height: (@headingsFontSizeH1 * 1.1); }
+h2 { line-height: (@headingsFontSizeH2 * 1.1); }
+h3 { line-height: (@headingsFontSizeH3 * 1.1); }
+h4 { line-height: (@headingsFontSizeH4 * 1.1); }
+h5 { line-height: (@headingsFontSizeH5 * 1.1); }
+h6 { line-height: (@headingsFontSizeH6 * 1.1); }
+
+.header {
+	//suppression décalage en trop
+	td.wrapper { padding-top: 0px; }
+	table.columns td, table.column td { padding-bottom: 0px; }
+}
+
+//en savoir plus
+.readMore {
+	display: block;
+	padding-top: 10px;
+	font-weight: bold;
+}
+
+//icone fléchée
+.icon-rsaquo {
+	font-style: normal;
+	font-size: 150%;
+	mso-line-height-rule: exactly;
+	line-height: 0px;
+	vertical-align: baseline;
+	bottom: -0.05em;
+}
+
+.title { padding-bottom: 5px; }
+
+//sur titres
+.preTitle {
+	display: block;
+	font-weight: lighter;
+	font-size: ceil(@headingsFontSizeH1 * 1.35);
+	mso-line-height-rule: exactly;
+	line-height: (@headingsFontSizeH1 * 0.85);
+	//compensation décalage entre font-size et line-height
+	padding-top: ((@headingsFontSizeH1 * 0.5) / 3);
+	small { font-size: (@headingsFontSizeH1 * 0.85); }
+	br { font-size: 0 !important; mso-line-height-rule: exactly; line-height: 0 !important; }
+}
+
+//réseaux sociaux
+.webicons td { text-align: right; }
+.webicon {
+	display: inline;
+	//pour supprimer les espaces
+	font-size: 0px;
+	mso-line-height-rule: exactly;
+	line-height: 0px;
+	padding: 0px 5px 5px 5px;
+	&.first { padding-left: 0px; }
+	&.last { padding-right: 0px; }
+	img {
+		display: inline;
+		float: none;
+		border-radius: 5px;
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .webicon img {
+		width: 30px !important;
+		height: 30px !important;
+	}
+}
+
+// contentOnline area
+// -------------------------
+.contentOnline {
+	//suppression fontSize et lineHeight pour débug Outlook
+	table.columns td, table.column td {
+		mso-line-height-rule: exactly;
+		line-height: 0px;
+		font-size: 0px;
+	}
+
+	//remise en place taille texte directement sur éléments
+	.online, .name {
+		mso-line-height-rule: exactly;
+		line-height: @baseLineHeight;
+		font-size: @baseFontSize;
+	}
+
+	.online {
+		display: block;
+		padding-bottom: 5px;
+	}
+	.name { display: block; }
+}
+
+// contentALaUne area
+// -------------------------
+.contentALaUne {
+	//suppression décalage en trop pour image
+	td.wrapper {
+		padding-top: 0px;
+		table.columns td, table.column td { padding-bottom: 0px; }
+		
+		//padding intérieur séparé pour Outlook
+		table.subWrapper td {
+			padding-top: @wrapperPad;
+			padding-bottom: @columnPad;
+		}
+	}
+}
+
+// contentArticles area
+// -------------------------
+.contentArticles {
+	//suppression décalage en trop sauf sur le dernier
+	table.columns td, table.column td { padding-bottom: 0px; }
+	&.last {
+		table.columns td, table.column td { padding-bottom: @columnPad; }
+	}
+
+	//suppression fontSize et lineHeight pour débug Outlook
+	td.wrapper.first {
+		table.columns td, table.column td {
+			mso-line-height-rule: exactly;
+			line-height: 0px;
+			font-size: 0px;
+		}
+	}
+
+	.title { padding-top: 4px; }
+	.readMore { padding-top: 0px; }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentArticles {
+		.title { padding-top: 0px !important; }
+	}
+}
+
+// contentBottom area
+// -------------------------
+.contentBottom {
+	td.wrapper {
+		//suppression décalage en trop déporté sur borderContainer
+		&.last {
+			padding-top: 0px;
+			table.columns .borderContainer td, table.column .borderContainer td { padding-bottom: 0px; }
+		}
+		.title { padding-top: @wrapperPad; }
+		&.dessin .title { padding-top: (@wrapperPad / 2); }
+	}
+
+	//gestion bordure Interne
+	.borderOffset {
+		display: block;
+		padding-bottom: 0px;
+		&.left { padding-left: @textPad; }
+		&.right { padding-right: @textPad; }
+
+		.border {
+			display: block;
+			font-size: 0px;
+			mso-line-height-rule: exactly;
+			line-height: 0px;
+			height: (@wrapperPad - 1px);
+		}
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentBottom {
+		td.wrapper {
+			&.last { padding-top: @wrapperPad !important; }
+			.border { border-top: none !important; }
+			.preTitle { line-height: @headingsFontSizeH1 !important; }
+		}
+		.borderContainer {
+			display: none !important;
+			visibility: hidden !important;
+		}
+	}
+}
+
+
+// DEFAULT COLORS
+// --------------------------------------------------
+
+// Main container
+// -------------------------
+.container { background-color: @nlContainerBackground; }
+
+
+// Typography
+// -------------------------
+body, table.body, h1, h2, h3, h4, h5, h6, p, td {
+	color: @nlText;
+}
+
+
+// Links
+// -------------------------
+a {
+	//LoVe's Hurts Fade Away (LVHFA)
+	&, h1 &, h2 &, h3 &, h4 &, h5 &, h6 &, .appleLinks & {
+		color: @nlLinkColor;
+		.important { color: @nlLinkColor !important; }
+		&:visited { &, .important { color: @nlLinkColor !important; } }
+		&:hover { &, .important { color: @nlLinkColorHover !important; } }
+		&:focus { &, .important { color: @nlLinkColorHover !important; } }
+		&:active { &, .important { color: @nlLinkColor !important; } }
+	}
+}
+
+
+// contentArticles area
+// -------------------------
+.contentArticles {
+	.title {
+		color: @nlCntArtTitle;
+		a { .newsletterLinkColor(@nlCntArtTitle); }
+		border-top: 1px dotted @nlCntArtBorder;
+	}
+	.text {
+		color: @nlCntArtText;
+		.important { color: @nlCntArtText !important; }
+	}
+	.newsletterInnerTextColor(@nlCntArtText);
+}
+//rajout bordure en bas en mode responsive
+@media only screen and (max-width: (@nlContainerWidth + @nlGutterWidth)) {
+	table[class="body"] .contentArticles {
+		.title { border-top: none !important; }
+		border-bottom: 1px dotted @nlCntArtBorder !important;
+		&.last { border-bottom: none !important; }
+	}
+}
+
+
+// contentBottom area
+// -------------------------
+.contentBottom {
+	.dessin {
+		.title {
+			color: @nlCntDsnTitle;
+			a { .newsletterLinkColor(@nlCntDsnTitle); }
+		}
+		.text {
+			color: @nlText;
+			.important { color: @nlText !important; }
+		}
+		.readMore {
+			color: @nlCntDsnReadMore;
+			.important { color: @nlCntDsnReadMore !important; }
+		}
+		.border { border-top: 1px dotted @nlCntDsnBorder; }
+	}
+
+	.profession {
+		.title {
+			color: @nlCntPrfTitle;
+			a { .newsletterLinkColor(@nlCntPrfTitle); }
+		}
+		.text {
+			color: @nlText;
+			.important { color: @nlText !important; }
+		}
+		.border { border-top: 1px dotted @nlCntPrfBorder; }
+	}
+
+	.question {
+		.title {
+			color: @nlCntQtnTitle;
+			a { .newsletterLinkColor(@nlCntQtnTitle); }
+		}
+		.text {
+			color: @nlText;
+			.important { color: @nlText !important; }
+		}
+		.border { border-top: 1px dotted @nlCntQtnBorder; }
+	}
+}
+
+
+// CUSTOM COLORS
+// --------------------------------------------------
+
+// Body
+// -------------------------
+body, table.body {
+	-premailer-background: e("##((nlBodyBackground))##");
+	//rajout pour suppression paramètre doublon via compiler
+	background-image: url("-premailer-bgdebug");
+}
+
+
+// Header
+// -------------------------
+//pour supprimer toute zone blanche avant chargement header
+.header { -premailer-background: e("##((nlBodyBackground))##"); }
+
+// contentOnline area
+// -------------------------
+.contentOnline {
+	&, td.expander { -premailer-background: e("##((nlCntOnlineBackground))##"); }
+	.newsletterInnerTextColor(e("##((nlCntOnlineText))##"));
+	.online {
+		color: e("##((nlCntOnlineText))##");
+		a { .newsletterLinkColor(e("##((nlCntOnlineText))##")); }
+	}
+	.name {
+		color: e("##((nlCntOnlineName))##");
+		a { .newsletterLinkColor(e("##((nlCntOnlineName))##")); }
+	}
+}
+
+// contentCabInform area
+// -------------------------
+.contentCabInform {
+	&, td.expander { -premailer-background: e("##((nlCntCabBackground))##"); }
+	.title {
+		color: e("##((nlCntCabTitle))##");
+		a { .newsletterLinkColor(e("##((nlCntCabTitle))##")); }
+	}
+	.text, .readMore, .icon-rsaquo {
+		color: e("##((nlCntCabText))##");
+		.important { color: e("##((nlCntCabText))##") !important; }
+	}
+	.newsletterInnerTextColor(e("##((nlCntCabText))##"));
+}
+
+// contentALaUne area
+// -------------------------
+.contentALaUne {
+	&, td.expander { -premailer-background: e("##((nlCntUneBackground))##"); }
+	.title {
+		color: e("##((nlCntUneTitle))##");
+		a { .newsletterLinkColor(e("##((nlCntUneTitle))##")); }
+	}
+	.text {
+		color: e("##((nlCntUneText))##");
+		.important { color: e("##((nlCntUneText))##") !important; }
+	}
+	.newsletterInnerTextColor(e("##((nlCntUneText))##"));
+	.readMore, .icon-rsaquo {
+		color: e("##((nlCntUneReadMore))##");
+		.important { color: e("##((nlCntUneReadMore))##") !important; }
+	}
+}
+
+// contentArticles area
+// -------------------------
+.contentArticles {
+	.title {
+		.icon-rsaquo {
+			color: e("##((nlCntArtIconColor))##");
+			.important { color: e("##((nlCntArtIconColor))##") !important; }
+		}
+	}
+	.readMore {
+		color: e("##((nlCntArtReadMore))##");
+		.important { color: e("##((nlCntArtReadMore))##") !important; }
+	}
+}
+
+
+// contentBottom area
+// -------------------------
+.contentBottom {
+	.agenda {
+		&, td.expander { -premailer-background: e("##((nlCntAgdBackground))##"); }
+		.preTitle {
+			color: e("##((nlCntAgdPreTitle))##");
+			.important { color: e("##((nlCntAgdPreTitle))##") !important; }
+		}
+		.title {
+			color: e("##((nlCntAgdTitle))##");
+			a { .newsletterLinkColor(e("##((nlCntAgdTitle))##")); }
+		}
+		.text {
+			color: e("##((nlCntAgdText))##");
+			.important { color: e("##((nlCntAgdText))##") !important; }
+		}
+		.newsletterInnerTextColor(e("##((nlCntAgdText))##"));
+	}
+
+	.chiffre {
+		&, td.expander { -premailer-background: e("##((nlCntChfBackground))##"); }
+		.preTitle {
+			color: e("##((nlCntChfPreTitle))##");
+			.important { color: e("##((nlCntChfPreTitle))##") !important; }
+		}
+		.title {
+			color: e("##((nlCntChfTitle))##");
+			a { .newsletterLinkColor(e("##((nlCntChfTitle))##")); }
+		}
+		.text {
+			color: e("##((nlCntChfText))##");
+			.important { color: e("##((nlCntChfText))##") !important; }
+		}
+		.newsletterInnerTextColor(e("##((nlCntChfText))##"));
+	}
+
+	.dessin {
+		.preTitle {
+			color: e("##((nlCntDsnPreTitle))##");
+			.important { color: e("##((nlCntDsnPreTitle))##") !important; }
+		}
+	}
+
+	.profession {
+		.preTitle {
+			color: e("##((nlCntPrfPreTitle))##");
+			.important { color: e("##((nlCntPrfPreTitle))##") !important; }
+		}
+	}
+
+	.question {
+		.preTitle {
+			color: e("##((nlCntQtnPreTitle))##");
+			.important { color: e("##((nlCntQtnPreTitle))##") !important; }
+		}
+	}
+}
+
+
+// contentContact area
+// -------------------------
+.contentContact {
+	&, td.expander { -premailer-background: e("##((nlCntCctBackground))##"); }
+	.newsletterInnerTextColor(e("##((nlCntCctText))##"));
+}
+
+
+// footer area
+// -------------------------
+.footer {
+	&, td.expander { -premailer-background: e("##((nlFooterBackground))##"); }
+	.newsletterInnerTextColor(e("##((nlFooterText))##"));
+	small { color: e("##((nlFooterText))##"); }
+}

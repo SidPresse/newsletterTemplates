@@ -7,8 +7,16 @@
 <body>
 <h1>Newsletter templates</h1>
 <ul>
-	<li><a href="/templates/testIntegration/newsletter.html">Test intégration</a></li>
-	<li><a href="/templates/liberaletvous/newsletter.html">Libéral et vous</a></li>
+<?php
+$templates = scandir('templates');
+if($templates != false) {
+	foreach ($templates as $template) {
+		if(strlen($template) > 2) {
+			echo '<li><a href="/templates/' . $template . '/newsletter.html">' . $template . '</a></li>';
+		}
+	}
+}
+?>
 </ul>
 </body>
 </html>

@@ -1,0 +1,40 @@
+// extends theme's variables.less file here
+
+//importation style par défaut de la maquette expertInfos
+@import "../../../expertInfos/theme/less/variables.less";
+
+
+// Component sizing
+// -------------------------
+// Based on 12px font-size
+
+@buttonFontSizeLarge:   (@baseFontSize * 1.60);  // ~19px
+@buttonFontSizeMedium:  (@baseFontSize * 1.30);  // ~16px
+@buttonFontSizeSmall:   (@baseFontSize * 1.15);  // ~14px
+@buttonFontSizeTiny:    (@baseFontSize * 0.85);  // ~10px
+
+
+// Buttons
+// -------------------------
+@btnBackground: @expertInfosBleu;
+
+
+// Newsletter Default Colors
+// --------------------------------------------------
+//couleur de fond générale
+@nlBodyBackground: #ffffff;
+@nlContainerBackground: @nlBodyBackground;
+@nlHrBorder: darken(@nlContainerBackground, 45%);
+
+//Visualisation message en ligne et Titre
+@nlCntOnlineBackground: @nlContainerBackground;
+@nlCntOnlineText: darken(@nlCntOnlineBackground, 45%);
+@nlCntOnlineName: @nlText;
+
+//Contact
+@nlCntCctBackground: @nlContainerBackground;
+@nlCntCctText: @nlText;
+
+//Footer
+@nlFooterBackground: @nlContainerBackground;
+@nlFooterText: darken(@nlFooterBackground, 45%);

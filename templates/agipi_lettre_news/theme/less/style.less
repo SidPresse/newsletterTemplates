@@ -1,0 +1,165 @@
+// theme's imports
+@import "import.less";
+
+// additionnal template's style which extends ink's style
+
+
+//gestion header
+.header { background-color: @colorAgipi1; }
+
+//réseaux sociaux
+.faicons td { text-align: right; }
+.faicon {
+	display: inline;
+	//pour supprimer les espaces
+	font-size: 0px;
+	mso-line-height-rule: exactly;
+	line-height: 0px;
+	padding: 0px 5px;
+	&.first { padding-left: 0px; }
+	&.last { padding-right: 0px; }
+	img {
+		display: inline;
+		float: none;
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .faicons {
+		.columns, .column { display: table !important; }
+		td { text-align: left !important; }
+	}
+	table[class="body"] .faicon img {
+		width: 30px !important;
+		height: 30px !important;
+	}
+}
+
+
+// contentOnline area
+// -------------------------
+.contentOnline {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(darken(@bodyBackground, 35%));
+	
+	td {
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.25);
+	}
+	//réduction décalage vertical
+	td.wrapper { padding-top: (@wrapperPad / 2); }
+	table.columns td, table.column td { padding-bottom: (@columnPad / 2); }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentOnline {
+		td.wrapper { padding-top: (@wrapperPadCollapse / 2) !important; }
+		table.columns td, table.column td { padding-bottom: (@columnPadCollapse / 2) !important; }
+	}
+}
+
+
+// contentLettre area
+// -------------------------
+.contentLettre {
+	//suppression marge sur dernier paragraphe
+	p:last-child { margin-bottom: 0px; }
+
+	td.wrapper.last { background-color: @colorAgipi2; }
+
+	//calage de l'image avec dimensions en dur
+	table.columns, table.column {
+		table.subWrapper {
+			td {
+				padding: 0px;
+				//rgba non géré sur certains clients, on feinte la transparence par un mix avec le fond
+				-webkit-box-shadow: 0 0 5px mix(#000, @colorAgipi2, 75%);
+				   -moz-box-shadow: 0 0 5px mix(#000, @colorAgipi2, 75%);
+				        box-shadow: 0 0 5px mix(#000, @colorAgipi2, 75%);
+			}
+
+			&, td {
+				-premailer-width: 280;
+				-premailer-height: 529;
+			}
+			//container responsive
+			.inner {
+				width: auto;
+				height: 529px;
+				max-width: 100%;
+				margin: 0px;
+			}
+		}
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentLettre {
+
+		td.wrapper.last {
+			padding-top: (@wrapperPadCollapse * 2) !important;
+			table.columns td, table.column td { padding-bottom: (@columnPadCollapse * 2) !important; }
+			table.subWrapper td { padding: 0px !important; }
+		}
+
+		table.columns, table.column {
+			table.subWrapper {
+				.inner { height: auto !important; }
+			}
+		}
+	}
+}
+
+
+// contentFooter area
+// -------------------------
+.contentFooter {
+	background-color: @colorAgipi1;
+	.newsletterInnerTextColor(#ffffff);
+	td {
+		font-size: @fontSizeSmall;
+		line-height: ceil(@fontSizeSmall * 1.25);
+		//titre et lien site plus gros
+		strong, a[href="http://www.agipi.com"] {
+			font-size: floor(@fontSizeSmall * 1.1);
+			line-height: floor(@fontSizeSmall * 1.25 * 1.1);
+		}
+	}
+	td.faicons { vertical-align: bottom; }
+
+	//différenciation padding pour zone centrale
+	td.wrapper.first {
+		table.columns .text-pad, table.column .text-pad { padding-right: 0px !important; }
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentFooter {
+		td.wrapper.first {
+			table.columns, table.column {
+				td { padding-bottom: (@columnPadCollapse / 2) !important; }
+				.text-pad { padding-right: @textPadCollapse !important; }
+			}
+		}
+		td.wrapper.last { padding-top: (@wrapperPadCollapse / 2) !important; }
+	}
+}
+
+
+// contentUnsubscribe area
+// -------------------------
+.contentUnsubscribe {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(darken(@bodyBackground, 35%));
+
+	td {
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.25);
+	}
+
+	//réduction décalage vertical
+	td.wrapper { padding-top: (@wrapperPad / 2); }
+	table.columns td, table.column td { padding-bottom: (@columnPad / 2); }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentUnsubscribe {
+		td.wrapper { padding-top: (@wrapperPadCollapse / 2) !important; }
+		table.columns td, table.column td { padding-bottom: (@columnPadCollapse / 2) !important; }
+	}
+}

@@ -1,0 +1,357 @@
+// theme's imports
+@import "import.less";
+
+// additionnal template's style which extends ink's style
+
+//pour rajouter de l'espace en haut et en dessous des wrappers
+.filler {
+	&, .empty {
+		line-height: 0;
+		font-size: 0;
+	}
+	height: @wrapperPad;
+	-premailer-height: @wrapperPad;
+}
+
+//icone en image
+.icon-img {
+	position: relative;
+	display: inline;
+	vertical-align: text-bottom;
+	line-height: 16px;
+	width: 16px !important;
+	height: 16px !important;
+	outline: 0 !important;
+	border: 0 !important;
+}
+//override version firefox
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .icon-img {
+		width: 16px !important;
+		height: 16px !important;
+	}
+}
+
+//couleurs des textes des boutons secondaires
+table.secondary td, table.secondary td a, table.secondary:hover td { color: #ffffff; }
+table.secondary:hover td a, table.secondary td a:visited, table.secondary:active td a { color: #ffffff !important; }
+
+//rajout bordure gauche et droite sur certaines zones
+.row.sideBorder {
+	border-left: 1px solid @colorExpertCom5;
+	border-right: 1px solid @colorExpertCom5;
+}
+
+//gestion row avec bordures de séparation
+.row.bordered {
+	//suppression décalage en trop
+	td.wrapper { padding-top: 0; }
+	table.columns td, table.column td { padding-bottom: 0; }
+
+	.wrapper {
+
+		//modification padding
+		.columns .text-pad { padding-left: (@textPad - 1px); }
+
+		//rajout bordure à gauche
+		border-left: 1px solid @colorExpertCom5;
+
+		//réduction largeur tableau 6 colonnes de 1px pour compenser
+		.columns.six { width: (5 * @gutterWidth + 6 * @columnWidth - 1px); }
+
+		//pas de bordure sur le premier
+		&.first {
+			border-left: 0;
+			.columns.six { .columnWidth(6); }
+			.columns .text-pad { padding-left: @textPad; }
+		}
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .row.bordered {
+		//masquage filler
+		.filler {
+			display: none !important;
+			visibility: hidden !important;
+		}
+
+		td.wrapper {
+			//supppression décalage interne en trop
+			.columns .text-pad {
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+			}
+
+			//changement orientation bordure et compensation padding
+			border-left: 0 !important;
+			padding-left: @textPadCollapse !important;
+			padding-right: @textPadCollapse !important;
+
+			//remise en place padding et rajout bordure
+			table.columns td, table.column td {
+				border-top: 1px solid @colorExpertCom5 !important;
+				padding-top: (@columnPad - 1px) !important;
+				padding-bottom: @columnPad !important;
+			}
+			
+			//pas de bordure sur premier wrapper
+			&.first {
+				table.columns td, table.column td {
+					border-top: 0 !important;
+					padding-top: @columnPad !important;
+				}
+			}
+		}
+	}
+}
+
+
+// header area
+// -------------------------
+.header {
+	background-color: @colorExpertCom2;
+	.newsletterInnerTextColor(@colorExpertCom3);
+
+	//augmentation padding vertical
+	td.wrapper { padding-top: (@wrapperPad * 2); }
+	table.columns td, table.column td { padding-bottom: (@columnPad * 2); }
+
+	img.avatar {
+		float: right;
+		padding-left: @textPad;
+	}
+
+	td.wrapper.amandine td {
+		table.columns td, table.column td { padding-bottom: @wrapperPad; }
+
+		&, .name {
+			text-align: right;
+			//pour aligner le texte sur la hauteur de l'image
+			line-height: (60px / 3);
+		}
+	}
+
+	td.wrapper.conseils {
+		padding-top: 0;
+		td {
+			padding-top: 0;
+			text-transform: uppercase;
+			font-size: (@baseFontSize * 1.667);
+			line-height: 1.1;
+		}
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .header {
+		td.wrapper {
+			padding-top: @wrapperPad !important;
+			&.amandine, &.conseils { padding-top: 0 !important; }
+		}
+		table.columns td, table.column td { padding-bottom: @columnPad !important; }
+
+		//taille forcée de l'image
+		img.logo {
+			width: 75% !important;
+			float: none !important;
+		}
+
+		img.avatar {
+			width: 60px !important;
+			height: 60px !important;
+			padding-left: @textPadCollapse !important;
+		}
+	}
+}
+
+
+// contentOnline area
+// -------------------------
+.contentOnline {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(@colorExpertCom2);
+	td {
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.33);
+	}
+
+	.online {
+		display: block;
+		padding-bottom: 5px;
+	}
+
+	.prestation { display: block; }
+}
+
+
+// contentInfoClient area
+// -------------------------
+.contentInfoClient {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(@colorExpertCom2);
+	td {
+		font-size: (@baseFontSize * 0.95);
+		line-height: (@baseFontSize * 0.95 * 1.33);
+	}
+}
+
+
+// contentTop area
+// -------------------------
+.contentTop {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(@colorExpertCom1);
+}
+
+
+// contentMain area
+// -------------------------
+.contentMain {
+	background-color: @bodyBackground;
+
+	.text {
+		display: block;
+		padding-bottom: 10px;
+	}
+
+	//gestion boutons
+	.wrapper-buttons {
+		width: 100%;
+		-premailer-width: 100%;
+
+		.sub-columns.first { padding-right: (@textPad / 2); }
+		.sub-columns.last { padding-left: (@textPad / 2); }
+
+		.button td {
+			padding: 0;
+			a {
+				.newsletterLinkColor(#ffffff);
+				//restylage bouton par défaut
+				padding: 5px 5px 4px 5px;
+				font-weight: bold;
+				font-size: (@baseFontSize * 0.95);
+				line-height: (@baseFontSize * 0.95 * 1.33);
+				// box-sizing: border-box;
+				width: auto;
+				height: auto;
+			}
+		}
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentMain {
+		.wrapper-buttons {
+			.sub-columns.first { padding-right: (@textPadCollapse / 2); }
+			.sub-columns.last { padding-left: (@textPadCollapse / 2); }
+
+			.button td { width: auto !important; }
+		}
+	}
+}
+
+
+// contentBottom area
+// -------------------------
+.contentBottom {
+	background-color: @bodyBackground;
+
+	.title {
+		color: @colorExpertCom1;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+
+	.number {
+		display: block;
+		//Même hauteur que l'image
+		font-size: 80px;
+		line-height: 120px;
+		font-weight: bold;
+		color: @colorExpertCom3;
+	}
+
+	//rajout bordure sur image
+	img {
+		float: none;
+		border: 1px solid @colorExpertCom5;
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentBottom {
+		.number { line-height: 100px !important; }
+	}
+}
+
+
+// contentFooter area
+// -------------------------
+.contentFooter {
+	background-color: @colorExpertCom5;
+	.newsletterInnerTextColor(@colorExpertCom2);
+	
+	.title {
+		text-transform: uppercase;
+		padding-bottom: 5px;
+		.icon-img { bottom: -1px; }
+	}
+}
+
+
+// contentContact area
+// -------------------------
+.contentContact {
+	background-color: @colorExpertCom4;
+	.newsletterInnerTextColor(@colorExpertCom2);
+
+	td {
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.33);
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentContact {
+		.wrapper.last { padding-top: 0 !important; }
+
+		//taille forcée de l'image
+		img.logo {
+			width: 145px !important;
+			height: 35px !important;
+			padding-left: 0 !important;
+			float: none !important;
+		}
+	}
+}
+
+
+// contentWebsite area
+// -------------------------
+.contentWebsite {
+	background-color: @colorExpertCom2;
+	.newsletterInnerTextColor(#ffffff);
+
+	td {
+		font-size: @headingsFontSizeH6;
+		line-height: (@headingsFontSizeH6 * 1.33);
+		word-break: normal;
+		word-wrap: normal;
+	}
+}
+
+
+// contentUnsubscribe area
+// -------------------------
+.contentUnsubscribe {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(@colorExpertCom2);
+
+	td {
+		font-size: (@baseFontSize * 0.95);
+		line-height: (@baseFontSize * 0.95 * 1.33);
+	}
+
+	.prestation { display: block; }
+
+	.unsub {
+		display: block;
+		padding-top: 5px;
+	}
+}

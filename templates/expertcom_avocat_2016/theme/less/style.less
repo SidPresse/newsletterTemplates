@@ -1,0 +1,480 @@
+// theme's imports
+@import "import.less";
+
+// additionnal template's style which extends ink's style
+
+//Propriétés mso-* utilisées dans Outlook
+//Debug outlook : http://www.verticalresponse.com/blog/its-not-you-its-outlook-the-complete-guide-for-email-marketers/
+
+// LAYOUT
+// --------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 { mso-line-height-rule: exactly; }
+h1 { line-height: (@headingsFontSizeH1 * 1.1); }
+h2 { line-height: (@headingsFontSizeH2 * 1.1); }
+h3 { line-height: (@headingsFontSizeH3 * 1.1); }
+h4 { line-height: (@headingsFontSizeH4 * 1.1); }
+h5 { line-height: (@headingsFontSizeH5 * 1.1); }
+h6 { line-height: (@headingsFontSizeH6 * 1.1); }
+
+//réduction tailles titrages en mode mobile
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] {
+		body, &, p, td {
+			font-size: floor(@baseFontSize * 0.9) !important;
+  			line-height: floor(@baseLineHeight * 0.9) !important;
+		}
+
+		small {
+			font-size: floor(@fontSizeSmall * 0.9) !important;
+		}
+
+		h1 {
+			font-size: floor(@headingsFontSizeH1 * 0.9) !important;
+			line-height: (floor(@headingsFontSizeH1 * 0.9) * 1.1) !important;
+		}
+		h2 {
+			font-size: floor(@headingsFontSizeH2 * 0.9) !important;
+			line-height: (floor(@headingsFontSizeH2 * 0.9) * 1.1) !important;
+		}
+		h3 {
+			font-size: floor(@headingsFontSizeH3 * 0.9) !important;
+			line-height: (floor(@headingsFontSizeH3 * 0.9) * 1.1) !important;
+		}
+		h4 {
+			font-size: floor(@headingsFontSizeH4 * 0.9) !important;
+			line-height: (floor(@headingsFontSizeH4 * 0.9) * 1.1) !important;
+		}
+		h5 {
+			font-size: floor(@headingsFontSizeH5 * 0.9) !important;
+			line-height: (floor(@headingsFontSizeH5 * 0.9) * 1.1) !important;
+		}
+		h6 {
+			font-size: floor(@headingsFontSizeH6 * 0.9) !important;
+			line-height: (floor(@headingsFontSizeH6 * 0.9) * 1.1) !important;
+		}
+	}
+}
+
+//tous les paragraphes pour Outlook
+//cf http://stackoverflow.com/questions/18109812/ms-outlook-email-templates-adding-extra-spacing
+p {
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 0px;
+}
+
+//lien de suivis
+.readMore {
+	width: 100%;
+	-premailer-width: 100%;
+	overflow: hidden;
+	clear: both;
+
+	table.columns &, table.column & {
+		td.buttonWrapper {
+			padding-bottom: 0px;
+			clear: both;
+			td { color: #ffffff; }
+		}
+		table.large-button {
+			display: table;
+			table-layout: auto;
+			width: auto;
+			-premailer-width: auto;
+			float: right;
+			td {
+				width: auto;
+				float: none;
+				-premailer-width: auto;
+				padding: 4px 8px;
+				vertical-align: middle;
+				//pour les éventuels paragraphes vides rajoutés par Outlook
+				a, p { margin: 0px !important; padding: 0px !important; }
+			}
+		}
+	}
+	.text + & {
+		table.columns &, table.column & {
+			td.buttonWrapper { padding-top: 20px; }
+		}
+	}
+}
+a.large-button-link {
+	padding: 0px;
+	margin: 0px;
+	.newsletterLinkColor(#ffffff);
+	line-height: ceil(@buttonFontSizeMedium * 1.33);
+	mso-line-height-rule: exactly;
+}
+table.columns .readMore td.buttonWrapper td, table.column .readMore td.buttonWrapper td {
+	//pour Outlook
+	&, p.MsoNormal {
+		line-height: ceil(@buttonFontSizeMedium * 1.33) !important;
+		mso-line-height-rule: exactly;
+		margin: 0px;
+	}
+	p.MsoNormal { padding: 0px; }
+}
+a.large-button-link, table.columns .readMore td.buttonWrapper td, table.column .readMore td.buttonWrapper td {
+	font-size: @buttonFontSizeMedium;
+	font-weight: bold;
+}
+
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] {
+		table.columns, table.column {
+			.readMore {
+				td.buttonWrapper {
+					padding-bottom: 0px !important;
+				}
+				table.large-button {
+					display: table !important;
+					table-layout: auto !important;
+					width: auto !important;
+					td {
+						width: auto !important;
+						padding: 4px 8px !important;
+					}
+				}
+			}
+		}
+		a.large-button-link, table.columns .readMore td.buttonWrapper td, table.column .readMore td.buttonWrapper td {
+			font-size: ceil(@buttonFontSizeMedium * 0.90) !important;
+			line-height: floor(@buttonFontSizeMedium * 0.90 * 1.33) !important;
+		}
+	}
+}
+
+
+//gestion header
+.header {
+	.newsletterInnerTextColor(@colorExpertCom2);
+
+	table.columns, table.column {
+		td.logoCont {
+			table.logoWrapper {
+				&, td {
+					width: 100%;
+					-premailer-width: 100%;
+				}
+				td {
+					border-bottom: 1px solid @colorExpertCom2;
+					padding-right: (@textPad / 4);
+					padding-bottom: (@wrapperPad / 2);
+				}
+			}
+		}
+		td.btnCont {
+			table.subWrapper {
+				&, td { text-align: right; }
+			}
+
+			table.readMore {
+				&, td.buttonWrapper {
+					width: 100%;
+					-premailer-width: 100%;
+				}
+				td.buttonWrapper { border-bottom: 1px solid @colorExpertCom2; }
+			}
+		}
+
+		td.logoCont, td.btnCont {
+			&, table.subWrapper { vertical-align: bottom; }
+			table.subWrapper {
+				&, td {
+					width: 100%;
+					-premailer-width: 100%;
+				}
+			}
+		}
+	}
+
+	//réduction décalage vertical
+	table.columns td, table.column td { padding-bottom: 0px; }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .header {
+		img {
+			max-width: 100% !important;
+			width: 300px;
+			height: auto !important;
+		}
+
+		table.columns, table.column {
+			td.logoCont table.logoWrapper td {
+				padding-right: (@textPadCollapse / 4) !important;
+				padding-bottom: (@wrapperPadCollapse / 2) !important;
+			}
+		}
+
+		//suppression padding rajouté
+		.text-pad-left { padding-right: 0px !important; }
+		.text-pad-right { padding-left: 0px !important; }
+
+		table.columns td, table.column td { padding-bottom: 0px !important; }
+	}
+}
+
+.subHeader {
+	.newsletterInnerTextColor(@colorExpertCom2);
+
+	td {
+		font-size: ceil(@baseFontSize * 0.85);
+		line-height: ceil(@baseFontSize * 0.85 * 1.25);
+	}
+
+	//réduction décalage vertical
+	td.wrapper { padding-top: (@wrapperPad / 2); }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .subHeader {
+		td.wrapper { padding-top: (@wrapperPadCollapse / 2) !important; }
+	}
+}
+
+
+// contentOnline and contentUnsubscribe area
+// -------------------------
+.contentOnline, .contentUnsubscribe {
+	background-color: @bodyBackground;
+	.newsletterInnerTextColor(darken(@bodyBackground, 35%));
+	
+	td {
+		font-size: @fontSizeSmall;
+		line-height: (@fontSizeSmall * 1.25);
+	}
+	//réduction décalage vertical
+	td.wrapper { padding-top: (@wrapperPad / 2); }
+	table.columns td, table.column td { padding-bottom: (@columnPad / 2); }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] {
+		.contentOnline,
+		.contentUnsubscribe {
+			td {
+				font-size: @fontSizeSmall !important;
+				line-height: (@fontSizeSmall * 1.25) !important;
+			}
+			td.wrapper { padding-top: (@wrapperPadCollapse / 2) !important; }
+			table.columns td, table.column td { padding-bottom: (@columnPadCollapse / 2) !important; }
+		}
+	}
+}
+
+
+// contentTop area
+// -------------------------
+.contentTop {
+	background-color: @colorExpertCom1;
+	.newsletterInnerTextColor(#ffffff);
+	h1.title { color: #ffffff; }
+
+
+	//pleine largeur pour le wrapper
+	td.wrapper {
+		width: @containerWidth;
+		-premailer-width: unit(@containerWidth);
+	}
+
+	table.columns, table.column {
+		&.imgCont td { padding-top: @wrapperPad; }
+
+		&.textCont {
+			table.readMore {
+				width: auto;
+				-premailer-width: auto;
+				td.buttonWrapper { padding-top: @wrapperPad; }
+				table.large-button { float: none; }
+			}
+
+			&, td.subTextCont {
+				//hauteur de l'image plus wrapperPad
+				height: (300px + @wrapperPad);
+				-premailer-height: unit(300px + @wrapperPad);
+				//largeur 8 colonnes moins text-pad
+				width: (7 * @gutterWidth + 8 * @columnWidth - @textPad);
+				-premailer-width: unit(7 * @gutterWidth + 8 * @columnWidth - @textPad);
+			}
+			td {
+				padding: 0px;
+				&, table.subWrapper { vertical-align: middle; }
+			}
+			table.subWrapper td.content {
+				padding-top: @wrapperPad;
+				padding-bottom: @columnPad;
+				padding-left: 0px;
+				padding-right: @textPad;
+			}
+		}
+	}
+
+	//suppression décalage vertical
+	td.wrapper { padding-top: 0px; }
+	table.columns td, table.column td { padding-bottom: 0px; }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentTop {
+		td.wrapper { width: auto !important; }
+		table.columns, table.column {
+			&.imgCont td { padding-top: @wrapperPadCollapse !important; }
+			&.textCont {
+				table.readMore {
+					width: auto !important;
+					td.buttonWrapper { padding-top: @wrapperPadCollapse !important; }
+				}
+
+				&, td.subTextCont { height: auto !important; }
+				table.subWrapper td.content {
+					padding-top: @wrapperPadCollapse !important;
+					padding-bottom: @columnPadCollapse !important;
+					padding-left: @textPadCollapse !important;
+					padding-right: @textPadCollapse !important;
+				}
+			}
+		}
+		table.imgCont, table.textCont { float: none !important; }
+		td.wrapper { padding-top: 0px !important; }
+		table.columns td, table.column td { padding-bottom: 0px !important; }
+	}
+}
+
+
+// contentMain area
+// -------------------------
+.contentMain {
+	//pleine largeur pour le wrapper
+	td.wrapper {
+		width: @containerWidth;
+		-premailer-width: unit(@containerWidth);
+	}
+
+	//espacement titre
+	.title {
+		padding-bottom: (@wrapperPad / 2);
+		mso-margin-bottom-alt: (@wrapperPad / 2);
+		a { .newsletterLinkColor(@headingsColor); }
+	}
+	
+	table.columns, table.column {
+		&.textCont {
+			&, td.subTextCont {
+				//hauteur de l'image
+				height: 330px;
+				-premailer-height: 330;
+				//largeur 4 colonnes moins text-pad
+				width: (3 * @gutterWidth + 4 * @columnWidth - @textPad);
+				-premailer-width: unit(3 * @gutterWidth + 4 * @columnWidth - @textPad);
+			}
+			td {
+				padding: 0px;
+				&, table.subWrapper { vertical-align: middle; }
+			}
+			table.subWrapper td {
+				padding-top: @wrapperPad;
+				padding-bottom: @columnPad;
+				padding-left: 0px;
+				padding-right: @textPad;
+			}
+		}
+	}
+
+	&.imgRight {
+		table.columns, table.column {
+			&.textCont table.subWrapper td {
+				padding-left: @textPad;
+				padding-right: 0px;
+			}
+		}
+	}
+
+	//suppression décalage vertical
+	td.wrapper { padding-top: 0px; }
+	table.columns td, table.column td { padding-bottom: 0px; }
+
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentMain {
+		td.wrapper { width: auto !important; }
+		.title { padding-bottom: (@wrapperPadCollapse / 2) !important; }
+		table.columns, table.column {
+			&.textCont {
+				&, td.subTextCont { height: auto !important; }
+				table.subWrapper td {
+					padding-top: @wrapperPadCollapse !important;
+					padding-bottom: @columnPadCollapse !important;
+					padding-left: @textPadCollapse !important;
+					padding-right: @textPadCollapse !important;
+				}
+			}
+		}
+		table.imgCont, table.textCont { float: none !important; }
+		td.wrapper { padding-top: 0px !important; }
+		table.columns td, table.column td { padding-bottom: 0px !important; }
+	}
+}
+
+
+// contentBottom area
+// -------------------------
+.contentBottom {
+	background-color: @colorExpertCom1;
+	.newsletterInnerTextColor(#ffffff);
+	td {
+		font-size: @headingsFontSizeH3;
+		line-height: (@headingsFontSizeH3 * 1.25);
+		&, a { font-weight: 600; }
+	}
+
+	h3.title {
+		color: #ffffff;
+		font-weight: 300;
+		padding-bottom: (@wrapperPad / 2);
+		mso-margin-bottom-alt: (@wrapperPad / 2);
+	}
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentBottom {
+		.title { padding-bottom: (@wrapperPadCollapse / 2) !important; }
+		td {
+			font-size: floor(@headingsFontSizeH3 * 0.9) !important;
+			line-height: (floor(@headingsFontSizeH3 * 0.9) * 1.1) !important;
+		}
+	}
+}
+
+
+// contentFooter area
+// -------------------------
+.contentFooter {
+	//réduction décalage vertical
+	table.columns td, table.column td { padding-bottom: (@columnPad / 2); }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentFooter {
+		img {
+			width: 300px !important;
+			height: 28px !important;
+		}
+		table.columns td, table.column td { padding-bottom: (@columnPadCollapse / 2) !important; }
+	}
+}
+
+
+// contentContact area
+// -------------------------
+.contentContact {
+	//forçage lien tel
+	// a[href^=tel] { .newsletterLinkColor(@linkColor); }
+	.newsletterInnerTextColor(@textColor);
+
+	//réduction décalage vertical
+	td.wrapper { padding-top: (@wrapperPad / 2); }
+}
+@media only screen and (max-width: (@containerWidth + @gutterWidth)) {
+	table[class="body"] .contentContact {
+		td.wrapper { padding-top: (@wrapperPadCollapse / 2) !important; }
+	}
+}
+
+
